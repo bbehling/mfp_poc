@@ -1,0 +1,23 @@
+{
+  "foods": [
+    {
+      "name": "apple",
+      "calories": 90,
+      "macro": "0 gram fat, 1 gram protein, 25 grams carbohydrate, 19 grams sugar (naturally occurring), and 3 grams fiber",
+      "micro": "boron, copper, manganese and zinc"
+    },
+    {
+      "name": "milk",
+      "calories": 900,
+      "macro": "0.9 to 1.2 g/dL protein, 3.2 to 3.6 g/dL fat, and 6.7 to 7.8 g/dL lactose",
+      "micro": "calcium, riboflavin, phosphorous, vitamins A and B12, potassium, magnesium, zinc, iodine"
+    },
+    {
+      "name": "steak",
+      "calories": 1500,
+      "macro": "179 calories, 7.6g fat,  60mg sodium, 0g carbohydrates, 0g fiber, 0g sugars, 26g protein",
+      "micro": " protein, iron, zinc, selenium, riboflavin, niacin, vitamin B6, vitamin B12, phosphorus, pantothenate, magnesium, and potassium"
+    }
+  ],
+  "meals": [{ "type": "snack" }, { "type": "lunch" }, { "type": "dinner" }]
+}
