@@ -2,6 +2,8 @@ import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import fsPromises from "fs/promises";
 import path from "path";
+import Link from "next/link";
+import { Button } from "@mantine/core";
 
 export default function Home(props) {
   const foods = props.foods;
@@ -14,9 +16,13 @@ export default function Home(props) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
+      <Link href="/hello" passHref>
+        <Button component="a">Next link button</Button>
+      </Link>
+
       <ul>
-        {foods.map((food) => (
-          <li>{food.name}</li>
+        {foods.map((food, i) => (
+          <li key={i}>{food.name}</li>
         ))}
       </ul>
     </div>
@@ -30,7 +36,6 @@ export async function getStaticProps() {
   const filePath = path.join(process.cwd(), "data.json");
   const jsonData = await fsPromises.readFile(filePath);
   const objectData = JSON.parse(jsonData);
-  console.log(objectData);
   return {
     props: objectData,
   };
