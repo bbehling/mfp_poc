@@ -1,22 +1,28 @@
 {
   "foods": [
     {
-      "name": "apple",
+      "id": 0,
+      "name": "Apple",
       "calories": 90,
       "macro": "0 gram fat, 1 gram protein, 25 grams carbohydrate, 19 grams sugar (naturally occurring), and 3 grams fiber",
-      "micro": "boron, copper, manganese and zinc"
+      "micro": "boron, copper, manganese and zinc",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/2/25/Alice_%28apple%29.jpg"
     },
     {
-      "name": "milk",
+      "id": 1,
+      "name": "Milk",
       "calories": 900,
       "macro": "0.9 to 1.2 g/dL protein, 3.2 to 3.6 g/dL fat, and 6.7 to 7.8 g/dL lactose",
-      "micro": "calcium, riboflavin, phosphorous, vitamins A and B12, potassium, magnesium, zinc, iodine"
+      "micro": "calcium, riboflavin, phosphorous, vitamins A and B12, potassium, magnesium, zinc, iodine",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/a/a5/Glass_of_Milk_%2833657535532%29.jpg"
     },
     {
-      "name": "steak",
+      "id": 2,
+      "name": "Steak",
       "calories": 1500,
       "macro": "179 calories, 7.6g fat,  60mg sodium, 0g carbohydrates, 0g fiber, 0g sugars, 26g protein",
-      "micro": " protein, iron, zinc, selenium, riboflavin, niacin, vitamin B6, vitamin B12, phosphorus, pantothenate, magnesium, and potassium"
+      "micro": " protein, iron, zinc, selenium, riboflavin, niacin, vitamin B6, vitamin B12, phosphorus, pantothenate, magnesium, and potassium",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/f/f4/Steak_with_shitaki_mushrooms.jpg"
     }
   ],
   "meals": [{ "type": "snack" }, { "type": "lunch" }, { "type": "dinner" }]
