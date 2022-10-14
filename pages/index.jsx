@@ -3,7 +3,7 @@ import styles from "../styles/Home.module.css";
 import fsPromises from "fs/promises";
 import path from "path";
 import { useState } from "react";
-import { Grid, Container, Card, Image, Text, Button, Group, createStyles } from "@mantine/core";
+import { Grid, Container, Card, Image, Text, Button, Group, createStyles, Radio } from "@mantine/core";
 import Food from "./food";
 
 const useStyles = createStyles(() => ({
@@ -11,30 +11,17 @@ const useStyles = createStyles(() => ({
 }));
 
 export default function Home(props) {
-  const calcTotalCalories = (foods) => {
-    if (foods) {
-      var calories = 0;
-      foods.forEach((food) => {
-        calories += food.calories;
-      });
-      setTotalCalories(calories);
-    }
-  };
+  const { classes } = useStyles();
 
-  const [totalCalories, setTotalCalories] = useState("");
   const [foods, setFoods] = useState(() => {
-    calcTotalCalories(props.foods);
     return props.foods;
   }, null);
-
-  const { classes } = useStyles();
 
   const deleteData = async (id) => {
     // if we had an API, make a call to get the delete the food item
     const response = await (await fetch("/api/food", { method: "DELETE" })).json();
     var foodsTemp = foods.filter((food) => food.id != id);
     setFoods(foodsTemp);
-    calcTotalCalories(foodsTemp);
   };
 
   const addData = async (food) => {
@@ -44,7 +31,7 @@ export default function Home(props) {
     var foodsTemp = JSON.parse(JSON.stringify(foods));
 
     //With React hooks, we can't push a new element on the array. Need to pass a new array to the hook.
-    //TODO CORB (cross origin read blocking) issue when adding a URL.This should't be an issue if using an API.
+    //CORB (cross origin read blocking) issue when adding a URL.This should't be an issue if using an API.
     foodsTemp.push({
       id: foods.length,
       name: food.foodName,
@@ -53,8 +40,8 @@ export default function Home(props) {
       micro: food.micro,
       image: food.imageUrl,
     });
+
     setFoods(foodsTemp);
-    calcTotalCalories(foodsTemp);
   };
 
   return (
@@ -68,8 +55,14 @@ export default function Home(props) {
       <Container my="md">
         <Grid>
           {foods.map((food) => (
-            <Grid.Col key={food.id} sm={4}>
-              <Card shadow="sm" p="lg" radius="md" withBorder style={{ minHeight: 575 }}>
+            //segment foods based on color. if a food is less 200 calories, consider it a snack
+            <Grid.Col
+              key={food.id}
+              sm={4}
+              radius="md"
+              style={food.calories < 200 ? { backgroundColor: "beige" } : { backgroundColor: "aliceblue" }}
+            >
+              <Card shadow="sm" p="lg" radius="md" withBorder style={{ minHeight: 580 }}>
                 <Card.Section>
                   <Image src={food.image} height={160} alt="Food" />
                 </Card.Section>
@@ -105,14 +98,6 @@ export default function Home(props) {
               </Card>
             </Grid.Col>
           ))}
-          <Grid.Col sm={4}>
-            <Card shadow="sm" p="lg" radius="md" withBorder>
-              <Text weight={300}>Total Calories for Day</Text>
-              <Text size="sm" color="dimmed">
-                {totalCalories}
-              </Text>
-            </Card>
-          </Grid.Col>
           <Grid.Col sm={4}>
             <Food addData={addData}></Food>
           </Grid.Col>

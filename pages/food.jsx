@@ -1,5 +1,5 @@
 import { TextInput, Button, NumberInput } from "@mantine/core";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Food(props) {
   const [foodName, setFoodName] = useState("");
@@ -10,11 +10,11 @@ export default function Food(props) {
 
   return (
     <div>
-      <TextInput label="Enter Food Name" onChange={(e) => setFoodName(e.target.value)} />
-      <TextInput label="Enter Macronutrients" onChange={(e) => setMacro(e.target.value)} />
-      <TextInput label="Enter Micronutrients" onChange={(e) => setMicro(e.target.value)} />
-      <TextInput label="Enter Calories" type="number" onChange={(e) => setCalories(e.target.value)} />
-      <TextInput label="Image URL" onChange={(e) => setImageUrl(e.target.value)} />
+      <TextInput label="Enter Food Name" onChange={(e) => setFoodName(e.target.value)} value={foodName} />
+      <TextInput label="Enter Macronutrients" onChange={(e) => setMacro(e.target.value)} value={macro} />
+      <TextInput label="Enter Micronutrients" onChange={(e) => setMicro(e.target.value)} value={micro} />
+      <TextInput label="Enter Calories" type="number" onChange={(e) => setCalories(e.target.value)} value={calories} />
+      <TextInput label="Image URL" onChange={(e) => setImageUrl(e.target.value)} value={imageUrl} />
       <Button
         variant="light"
         color="green"
@@ -29,6 +29,11 @@ export default function Food(props) {
             macro: macro,
             calories: parseInt(calories),
           });
+          setFoodName("");
+          setMacro("");
+          setMicro("");
+          setCalories("");
+          setImageUrl("");
         }}
       >
         Add Food
