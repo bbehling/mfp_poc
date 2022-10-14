@@ -12,7 +12,7 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## NOTE: In chrome on Mac, you may need to allow Chrome to access local files since we are loading JSON data instead of calling API
+## NOTE: In chrome on Mac, you may need to allow Chrome to access local files since we are loading local JSON data instead of using an API
 
 You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
 
