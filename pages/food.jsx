@@ -8,6 +8,12 @@ export default function Food(props) {
   const [calories, setCalories] = useState("");
   const [imageUrl, setImageUrl] = useState("");
 
+  const CreateUUID = () => {
+    return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, (c) =>
+      (c ^ (crypto.getRandomValues(new Uint8Array(1))[0] & (15 >> (c / 4)))).toString(16)
+    );
+  };
+
   return (
     <div>
       <TextInput label="Enter Food Name" onChange={(e) => setFoodName(e.target.value)} value={foodName} />
@@ -23,6 +29,7 @@ export default function Food(props) {
         radius="md"
         onClick={() => {
           props.addData({
+            id: CreateUUID(),
             foodName: foodName,
             imageUrl: imageUrl,
             micro: micro,

@@ -24,6 +24,5 @@
       "micro": " protein, iron, zinc, selenium, riboflavin, niacin, vitamin B6, vitamin B12, phosphorus, pantothenate, magnesium, and potassium",
       "image": "https://upload.wikimedia.org/wikipedia/commons/f/f4/Steak_with_shitaki_mushrooms.jpg"
     }
-  ],
-  "meals": [{ "type": "snack" }, { "type": "lunch" }, { "type": "dinner" }]
+  ]
 }

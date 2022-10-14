@@ -22,7 +22,7 @@ export default function Foods(props) {
   });
 
   const deleteData = async (id) => {
-    // if we had an API, make a call to get the delete the food item
+    // if we had an API, make a call to delete the food item
     const response = await (await fetch("/api/food", { method: "DELETE" })).json();
     setFoods(foods.filter((food) => food.id != id));
   };
@@ -31,8 +31,8 @@ export default function Foods(props) {
     // if we had an API, make a call to post a new food item
     const response = await (await fetch("/api/food", { method: "POST" })).json();
 
-    let foodObj = {
-      id: foods.length,
+    const foodObj = {
+      id: food.id,
       name: food.foodName,
       calories: food.calories,
       macro: food.macro,
@@ -45,10 +45,10 @@ export default function Foods(props) {
   return (
     <Container my="md">
       <Grid>
-        {foods.map((food) => (
+        {foods.map((food, i) => (
           //segment foods based on color. if a food is less 200 calories, consider it a snack
           <Grid.Col
-            key={food.id}
+            key={i}
             sm={4}
             radius="md"
             style={food.calories < 200 ? { backgroundColor: "beige" } : { backgroundColor: "aliceblue" }}
@@ -101,5 +101,3 @@ export default function Foods(props) {
     </Container>
   );
 }
-
-// load from local data file.
