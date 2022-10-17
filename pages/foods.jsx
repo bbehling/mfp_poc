@@ -91,7 +91,7 @@ export default function Foods(props) {
         ))}
         <Grid.Col sm={4}>
           <Card shadow="sm" p="lg" radius="md" withBorder>
-            <Text weight={300}>{totalCalories}</Text>
+            <Text weight={300}>Total Daily Calories: {totalCalories}</Text>
           </Card>
         </Grid.Col>
         <Grid.Col sm={4}>
